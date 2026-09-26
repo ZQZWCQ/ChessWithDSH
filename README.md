@@ -6,8 +6,6 @@
 
 ## 和 ChessWithCodex 的关系
 
-两个项目是亲缘关系，不是移植，也不是 fork。
-
 数据契约逐字对齐（`games/`、`notes/`、`cache/evals.json`，以及棋谱库的 `index.json`），
 所以棋谱、讲解、评估缓存可以在两边来回搬。工具层和渲染管线互相参考，
 宿主接入和产品取向各自决定。
@@ -17,7 +15,7 @@
 | 文件 | 内容 |
 | --- | --- |
 | [AGENTS.md](AGENTS.md) | 操作契约：硬性要求、命令、讲解方式、边界 |
-| [docs/pitfalls.md](docs/pitfalls.md) | 踩过的坑 |
+| [docs/problems_met.md](docs/problems_met.md) | 遇到过的问题 |
 | docs/architecture.md | 目录职责和设计（待补） |
 
 ## 许可
