@@ -23,7 +23,7 @@
 ## 分支与 PR
 
 分支名 `<type>/<短描述>`，type 跟提交信息一致：`feat/ fix/ docs/ refactor/ test/ chore/`。
-一个分支只做一件事，标题写中文短句，正文说清改了什么、为什么、怎么验证。
+一个分支不做太多事，标题写中文短句，正文说清改了什么、为什么、怎么验证。
 提交信息用 Conventional Commits，例如 `feat(engine): 补 Windows 引擎查找`。
 不要直接 push 到 `main`。合并前 `pnpm verify` 要全绿，CI 跑的是同一条命令。
 
