@@ -1,0 +1,16 @@
+# 跨平台换行纪律：仓库里一律 LF，检出也一律 LF。
+#
+# 为什么必须钉死：本项目的 CI 同时跑 ubuntu 和 windows，而 Prettier 的
+# endOfLine 默认是 "lf"。如果 Windows 上因为 core.autocrlf 检出成 CRLF，
+# 那么同一份代码在 Linux 上 format:check 通过、在 Windows 上却失败 ——
+# 一个纯环境和配置引起的假失败，排查起来非常费时间。
+* text=auto eol=lf
+
+# 二进制文件不要做任何换行转换
+*.png binary
+*.jpg binary
+*.gif binary
+*.woff binary
+*.woff2 binary
+*.wasm binary
+*.nnue binary

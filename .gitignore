@@ -1,0 +1,21 @@
+node_modules/
+lib/
+coverage/
+*.log
+.DS_Store
+.tmp/
+
+# 运行数据（绝不入库）
+pgn/
+games/
+notes/
+cache/
+sessions/
+engines/
+dist/
+
+# 引擎与权重绝不入库
+*.nnue
+stockfish
+stockfish.exe
+stockfish-single.js
