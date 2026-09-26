@@ -17,7 +17,6 @@ pnpm verify
 ## 自查
 
 - [ ] `pnpm verify` 本地全绿
-- [ ] 一个分支不做太多事
 - [ ] 没有引入 GPL/AGPL 依赖，没有把引擎或 NNUE 权重加进仓库
-- [ ] 台账类改动（`games/`）是生成物，讲解写在 `notes/`
-- [ ] 文档与行为一致（`AGENTS.md` / README）
+- [ ] `games/` 没有手改，讲解写在 `notes/`
+- [ ] 文档跟着代码一起改了（AGENTS.md / README）
