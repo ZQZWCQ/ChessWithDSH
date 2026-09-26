@@ -13,5 +13,5 @@
 # ============================================================================
 
 - insert:
-    - id: chesswithdsh
-      name: chesswithdsh
+    - id: chess-with-dsh
+      name: chess-with-dsh
