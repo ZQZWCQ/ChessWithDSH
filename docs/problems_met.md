@@ -11,6 +11,4 @@
 |语法错误|在 JS 模板串里嵌大段 CSS 或 HTML，反引号提前闭合|模板单独放文件，启动时校验占位符|
 |第二次分析还在查引擎，以为缓存坏了|改了深度或换了引擎，键跟着变|预期行为。键由深度和引擎名决定，换了自然重算|
 |Windows 上通过 PATH 找不到引擎|候选名缺 `.exe`；用宿主的分隔符去切 PATH|Windows 候选写成 `['stockfish.exe', 'stockfish']`，补上 WinGet Links、LOCALAPPDATA、ProgramFiles|
-
-
-
+|读到的文件和远端状态都是旧的|工作区停在过期分支上；判断远端用的是旧快照|读仓库文件前先 `git branch --show-current`，看远端状态前先 `git fetch`|
