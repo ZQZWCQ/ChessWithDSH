@@ -1,5 +1,5 @@
 {
-  "name": "chesswithdsh",
+  "name": "chess-with-dsh",
   "version": "0.0.0",
   "private": true,
   "description": "在 DeepSeek Harness 里下一盘能讲明白的棋：本地 Stockfish 负责算，模型只负责讲。",
