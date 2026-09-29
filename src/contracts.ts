@@ -53,3 +53,88 @@ export const AUTHORED_FIELDS = ['note', 'arrows', 'highlights', 'markers'] as co
 
 /** {@link AUTHORED_FIELDS} 的元素类型。 */
 export type AuthoredField = (typeof AUTHORED_FIELDS)[number]
+
+/** 标注色调。取值与姊妹项目一致，改了两边的渲染层就对不上。 */
+export type Tone =
+  'focus' | 'plan' | 'best' | 'alt' | 'threat' | 'mistake' | 'blunder' | 'check' | 'last'
+
+/** 棋盘上的箭头。人写字段之一。 */
+export interface Arrow {
+  readonly from: string
+  readonly to: string
+  readonly tone: Tone
+}
+
+/** 方格高亮的画法。dot 画在棋子之上。 */
+export type HighlightStyle = 'fill' | 'ring' | 'dot'
+
+/** 方格高亮。人写字段之一。 */
+export interface Highlight {
+  readonly square: string
+  readonly tone: Tone
+  readonly style: HighlightStyle
+}
+
+/** 格角标记，例如 ??。人写字段之一。 */
+export interface Marker {
+  readonly square: string
+  readonly text: string
+  readonly shape: 'glyph' | 'badge'
+  readonly tone: Tone
+  readonly corner?: 'tl' | 'tr' | 'bl' | 'br'
+}
+
+/** 一手棋。棋谱的原子单位。 */
+export interface Ply {
+  /** 半回合序号，1 起。奇数白走，偶数黑走。 */
+  readonly ply: number
+  readonly san: string
+  readonly uci: string
+  /** 这一手走完之后的局面。 */
+  readonly fen: string
+  /** 白方视角。mate 非空时无意义。 */
+  readonly cp: number | null
+  readonly mate: number | null
+  /** 以下四项是人写的，重算时必须原样保留。 */
+  readonly note?: string
+  readonly arrows?: readonly Arrow[]
+  readonly highlights?: readonly Highlight[]
+  readonly markers?: readonly Marker[]
+}
+
+/** notes/<id>.json 里的一条。字段与 Ply 的人写部分同形。 */
+export interface NoteEntry {
+  readonly ply: number
+  readonly san: string
+  readonly note?: string
+  readonly arrows?: readonly Arrow[]
+  readonly highlights?: readonly Highlight[]
+  readonly markers?: readonly Marker[]
+}
+
+/** notes/<id>.json 是人写的资产，重算永不覆盖。 */
+export interface NoteFile {
+  readonly schema: number
+  readonly start_note?: string
+  readonly plies: readonly NoteEntry[]
+}
+
+/** 引擎记录：身份加搜索深度。 */
+export interface GameEngine extends EngineIdentity {
+  readonly depth: number
+}
+
+/** games/<id>.json 是唯一数据源，但由 PGN 生成，不要手改。 */
+export interface GameRecord {
+  readonly schema: number
+  readonly id: string
+  readonly title?: string
+  /** PGN 头原样保留。 */
+  readonly headers: Readonly<Record<string, string>>
+  readonly start_fen: string
+  readonly plies: readonly Ply[]
+  readonly engine: GameEngine
+  readonly created: string
+  readonly analyzed: string
+  readonly source?: string
+}
